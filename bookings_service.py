@@ -1,7 +1,10 @@
 from bookings_db import bookings_db 
 
-def find_many(offset: int, limit: int):
-    return list(bookings_db.values())
+def find_many(offset, limit):
+    bookings_list = list(bookings_db.values())
+    offset = int(offset)
+    limit = int(limit)
+    return bookings_list[offset:offset + limit]
 
 def find_one(id: str):
     bookings = bookings_db.get(str(id))
